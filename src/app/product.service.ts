@@ -38,7 +38,6 @@ export class ProductService {
   }
 
   createProduct(product,image){
-    debugger
     const formData = new FormData();
       formData.append('product[name]', product['name'])
       formData.append('product[price]',product['price'])
@@ -49,4 +48,17 @@ export class ProductService {
       formData.append('product[features][rating]',product['features']['rating'])
       return this.http.post(environment.apiUrl+'/products',formData);
   }
+
+  getting_product(id){
+      return this.http.get(environment.apiUrl+'/products/'+id)
+    }
+  updateProduct(product,id){
+    
+    return this.http.patch(environment.apiUrl+'/products/'+id,product);
+  }
+
+  deleteProduct(id){
+   return this.http.delete(environment.apiUrl+'/products/'+id);
+  }
+
 }

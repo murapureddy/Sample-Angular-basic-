@@ -2,19 +2,33 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
+               <h2 *ngIf="isNew">New Product</h2>
+               <h2 *ngIf="!isNew">Edit Product</h2>
                 <form  [formGroup] = "productForm" (ngSubmit)="createProduct()">
                     <div class="form-group">
                         <label>Name</label>
                         <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                        <div *ngIf="f.name.errors && (f.name.touched || f.name.dirty)" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">Name is required</div>
+                            <div *ngIf="f.name.errors.minlength">Name Should Be 5 Letters</div>
+                        </div>
                       </div>
                     <div class="form-group">
                         <label>Description</label>
                         <input type="text" formControlName="description" class="form-control">
+                        <div *ngIf="f.description.errors && (f.description.touched || f.description.dirty)" class="invalid-feedback">
+                            <div *ngIf="f.description.errors.required">Description is required</div>
+                            <div *ngIf="f.description.errors.minlength">Description Should Be 25 Letters</div>
+                        </div>
                     </div>
                      <div class="form-group">
                         <label>Price</label>
-                        <input type="number" formControlName="price" class="form-control">
+                        <input type="text" formControlName="price" class="form-control">
                     </div>
+                     <div *ngIf="f.price.touched && f.price.invalid" class="alert alert-danger">
+                <div *ngIf="f.price.errors.required">Number is required.</div>
+                <div *ngIf="f.price.errors.pattern">Enter only number.</div>
+            </div>
                     <div class="form-group">
                     <label>Image:</label>
         <input #imageInput
@@ -45,7 +59,7 @@
 
                     <div class="form-group">
                       
-                      <input type="submit" class="btn btn-primary" value="Create">
+                      <input type="submit" class="btn btn-primary" value="{{isNew===true ? 'Create' : 'Update'}}">
 
                     </div>
               

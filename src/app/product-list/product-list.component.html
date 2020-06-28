@@ -1,10 +1,7 @@
-
-
 <div class="container">
   <div class='card-header'>
     <h2 appChangeColor inputvalue="green">{{pageTitle}}</h2>
   </div>
-
 
 <table class="table table-bordered">
   <thead>
@@ -14,22 +11,24 @@
       </th>
     </tr>
 </thead>
-
 <tbody>
-  <tr *ngFor="let product of products">
-   <td><img src="{{URL}}/{{product.image}}" [style.width.px]='imageWidth' [style.margin.px]='imageMargin'></td>
-            <td><a [title]="product.name + ' product'" [routerLink]="['/product-list', product.id]">
-            {{ product.name}}</a></td>
+  <tr *ngFor="let product of products" (click)="onSelect(product)">
+          <td><img src="{{URL}}/{{product.image}}" [style.width.px]='imageWidth' [style.margin.px]='imageMargin'></td>
+            <td>
+              <a [routerLink]="[ '/product-detail',product.id]">
+                {{ product.name }}
+              </a>
+            </td>
             <td>{{product.price}}</td>
             <td appChangeColor>{{ product.description }}</td>
-            <td><a [routerLink]="['/product-list',product.id]">Show</a></td>
-            <td><a [routerLink]="['/product-list',product.id]">Edit</a></td>
-            <td><a [routerLink]="['/product-list',product.id]">Destroy</a></td>
-            
+            <!-- <td><a [routerLink]="['/product-list',product.id]">Show</a></td> -->
+            <td><button type="submit" class="btn btn-info"><a [routerLink]="['/edit',product.id]">Edit</a></button></td>
+            <td>
+                  <button type="submit" class="btn btn-info" (click)="deleteOwner(product.id)">Delete</button>
+            </td>    
   </tr>
 </tbody>
 </table>
-
-  
-  
-
+</div>
+<!--   <app-product-detail [hero]="selectedHero"></app-product-detail>
+ -->

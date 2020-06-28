@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <ul class="nav navbar-nav navbar-left">
-      <li><a class="navbar-brand" href="#">ShoppingCart</a></li>
+      <li><a class="navbar-brand" href="#">DashBoard</a></li>
       <li *ngIf="user"><a routerLink="/product-form">New Product</a></li>
       </ul>  
     </div>
@@ -15,14 +15,12 @@
     <div *ngIf="user">
     <ul class="nav navbar-nav navbar-right">
     <li><a routerLink="product-list"><span>Product List</span></a></li>
-     <li><a routerLink="/profile"><img src="{{URL}}/{{user.image}}" [style.width.px]='25' [style.margin.px]='3'>Profile</a></li>
+     <li><a href="#"><img src="{{URL}}/{{user.image}}" [style.width.px]='25' [style.margin.px]='3'>Profile</a></li>
     <li><a href="#" class="nav-item nav-link" (click)="logout()">Logout</a></li>
   </ul>
   </div>
   </div>
 </nav>
-
 <router-outlet></router-outlet>
-
   
 
