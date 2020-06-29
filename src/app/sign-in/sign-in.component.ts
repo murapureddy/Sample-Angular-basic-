@@ -32,7 +32,7 @@ export class SignInComponent implements OnInit {
          location.href = '/product-list'
       }
       else{
-        this.notifyService.showSuccess("","Invalid Email and Password")
+        this.notifyService.showError("","Invalid Email and Password")
         this.router.navigate(['/login'])
       }
     });
