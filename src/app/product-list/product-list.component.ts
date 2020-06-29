@@ -58,6 +58,12 @@ onSelect(hero): void {
     });
   }
 
+  clickMethod(id) {
+  if(confirm("Are you sure to delete")) {
+    this.deleteOwner(id)
+  }
+}
+
 deleteOwner(id){
   this.productService.deleteProduct(id).subscribe(res =>{
       if(res['status']==200){
