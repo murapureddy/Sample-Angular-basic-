@@ -1,5 +1,5 @@
 <div class='card'
      *ngIf='username'>
   <div class='card-header'>
-    {{pageTitle + ': ' + username.username}}
+    {{pageTitle + ': ' + (username.username | uppercase)}}
   </div>
