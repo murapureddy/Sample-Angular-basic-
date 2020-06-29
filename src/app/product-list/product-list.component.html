@@ -2,7 +2,14 @@
   <div class='card-header'>
     <h2 appChangeColor inputvalue="green">{{pageTitle}}</h2>
   </div>
-
+<div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">
+        <i class="glyphicon glyphicon-search"></i>
+      </div>
+  <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Search" aria-label="Search">
+    </div>
+  </div>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -12,7 +19,7 @@
     </tr>
 </thead>
 <tbody>
-  <tr *ngFor="let product of products" (click)="onSelect(product)">
+  <tr *ngFor="let product of products | filter : searchText">
           <td><img src="{{URL}}/{{product.image}}" [style.width.px]='imageWidth' [style.margin.px]='imageMargin'></td>
             <td>
               <a [routerLink]="[ '/product-detail',product.id]">
@@ -23,11 +30,15 @@
             <td appChangeColor>{{ product.description }}</td>
             <!-- <td><a [routerLink]="['/product-list',product.id]">Show</a></td> -->
             <td><button type="submit" class="btn btn-info"><a [routerLink]="['/edit',product.id]">Edit</a></button></td>  
-            <td><button type=button class="btn btn-info"  (click)="clickMethod(product.id)">Delete</button></td>
+            <td><button type=button class="btn btn-info"  (click)="deleteMethod(product.id)">Delete</button></td>
 
   </tr>
 </tbody>
 </table>
 </div>
+<!-- <div *ngIf="totalRec > 5">
+    <pagination-controls  id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+  </div> -->
+  
 <!--   <app-product-detail [hero]="selectedHero"></app-product-detail>
  -->

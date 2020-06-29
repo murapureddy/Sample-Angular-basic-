@@ -8,7 +8,6 @@ import { environment } from 'src/environments/environment';
 
 
 
-
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -20,11 +19,13 @@ export class ProductListComponent implements OnInit {
   headers;
   pageTitle = 'Product List';
   URL;
+  searchText;
   parentMessage = "message from parent"
   image;
   selectedProduct;
   imageWidth = 75;
   imageMargin = 4;
+  page: number = 1;
   constructor(private productService: ProductService,private httpClient: HttpClient,private route: ActivatedRoute,private router:Router,private notifyService : NotificationService) { }
 
   ngOnInit(): void {
@@ -51,10 +52,11 @@ onSelect(hero): void {
   getProductDetails(){
      this.productService.productDetails().subscribe(res =>{
       this.products=res["products"];
+      /*this.totalRec = this.products.length;*/
     });
   }
 
-  clickMethod(id) {
+  deleteMethod(id) {
   if(confirm("Are you sure to delete")) {
     this.deleteOwner(id)
   }

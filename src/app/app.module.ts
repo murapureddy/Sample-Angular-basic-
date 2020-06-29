@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { FilterPipe } from './filter.pipe';
 
 
 
@@ -25,11 +27,13 @@ import { HeaderComponent } from './header/header.component';
     ProductNewComponent,
     ChangeColorDirective,
     ProductDetailComponent,
-    HeaderComponent
+    HeaderComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CommonModule,
     ToastrModule.forRoot({
   toastClass: 'toast toast-bootstrap-compatibility-fix',closeButton: true
 }),
