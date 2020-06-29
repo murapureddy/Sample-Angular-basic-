@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FilterPipe } from './filter.pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 
 
@@ -34,6 +36,7 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
+    NgxPaginationModule,
     ToastrModule.forRoot({
   toastClass: 'toast toast-bootstrap-compatibility-fix',closeButton: true
 }),

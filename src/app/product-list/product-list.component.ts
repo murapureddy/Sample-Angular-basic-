@@ -26,6 +26,7 @@ export class ProductListComponent implements OnInit {
   imageWidth = 75;
   imageMargin = 4;
   page: number = 1;
+  totalRec : number;
   constructor(private productService: ProductService,private httpClient: HttpClient,private route: ActivatedRoute,private router:Router,private notifyService : NotificationService) { }
 
   ngOnInit(): void {
@@ -52,7 +53,7 @@ onSelect(hero): void {
   getProductDetails(){
      this.productService.productDetails().subscribe(res =>{
       this.products=res["products"];
-      /*this.totalRec = this.products.length;*/
+      this.totalRec = this.products.length;
     });
   }
 

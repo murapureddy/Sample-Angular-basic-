@@ -19,7 +19,10 @@
     </tr>
 </thead>
 <tbody>
-  <tr *ngFor="let product of products | filter : searchText">
+    <tr *ngFor="let product of products | filter : searchText | paginate: { id: 'listing_pagination',
+                                                      itemsPerPage: 5,
+                                                      currentPage: page,
+                                                      totalItems: totalRec }">
           <td><img src="{{URL}}/{{product.image}}" [style.width.px]='imageWidth' [style.margin.px]='imageMargin'></td>
             <td>
               <a [routerLink]="[ '/product-detail',product.id]">
@@ -36,9 +39,7 @@
 </tbody>
 </table>
 </div>
-<!-- <div *ngIf="totalRec > 5">
+<div *ngIf="totalRec > 5">
     <pagination-controls  id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
-  </div> -->
-  
-<!--   <app-product-detail [hero]="selectedHero"></app-product-detail>
- -->
+  </div>
+
