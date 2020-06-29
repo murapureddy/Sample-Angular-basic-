@@ -21,6 +21,7 @@
   </div>
   </div>
 </nav>
+    <div *ngIf="user"><app-header [username]="user"></app-header></div>
 <router-outlet></router-outlet>
   
 

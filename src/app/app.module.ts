@@ -15,6 +15,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductNewComponent } from './product-new/product-new.component';
 import { ChangeColorDirective } from './change-color.directive';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     ProductListComponent,
     ProductNewComponent,
     ChangeColorDirective,
-    ProductDetailComponent
+    ProductDetailComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

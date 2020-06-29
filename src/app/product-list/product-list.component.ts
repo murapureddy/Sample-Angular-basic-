@@ -25,10 +25,6 @@ export class ProductListComponent implements OnInit {
   selectedProduct;
   imageWidth = 75;
   imageMargin = 4;
-  popoverTitle: string = 'Confirmation';
-  popoverMessage: string = 'Delete Product?';
-  confirmClicked: boolean = false;
-  cancelClicked: boolean = false;
   constructor(private productService: ProductService,private httpClient: HttpClient,private route: ActivatedRoute,private router:Router,private notifyService : NotificationService) { }
 
   ngOnInit(): void {
